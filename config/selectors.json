@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "remote_url": "https://raw.githubusercontent.com/user/relay-selectors/main/selectors.json",
+  "platforms": {
+    "chatgpt": {
+      "limit_triggers": [
+        { "type": "data-testid", "value": "rate-limit-banner" },
+        { "type": "text_contains", "selector": "div", "value": "You've reached your limit" },
+        { "type": "text_contains", "selector": "div", "value": "You've reached the Free limit" },
+        { "type": "text_contains", "selector": "div", "value": "limit reached" },
+        { "type": "text_contains", "selector": "div", "value": "Upgrade now or wait until" },
+        { "type": "text_contains", "selector": "div", "value": "reached the limit" }
+      ],
+      "warning_triggers": [
+        { "type": "text_contains", "selector": "div", "value": "messages left" }
+      ],
+      "message_selectors": {
+        "user": "[data-message-author-role='user']",
+        "assistant": "[data-message-author-role='assistant']"
+      },
+      "code_block_selectors": ["pre code"],
+      "input_selector": "textarea#prompt-textarea",
+      "input_type": "textarea",
+      "reset_window_hours": 3
+    },
+    "claude": {
+      "limit_triggers": [
+        { "type": "sse_event", "value": "message_limit" },
+        { "type": "attribute", "selector": "div[data-testid='composer-input']", "attribute": "disabled" },
+        { "type": "text_contains", "selector": "div, span, p, button", "value": "out of free messages" },
+        { "type": "text_contains", "selector": "div, span, p", "value": "out of messages" },
+        { "type": "text_contains", "selector": "div, span, p", "value": "reached your limit" },
+        { "type": "text_contains", "selector": "div, span, p", "value": "message limit" },
+        { "type": "text_contains", "selector": "div, span, p", "value": "Keep working" }
+      ],
+      "warning_triggers": [
+        { "type": "text_contains", "selector": "div, span, p", "value": "messages remaining" }
+      ],
+      "message_selectors": {
+        "user": "[data-testid^='human-turn']",
+        "assistant": "[data-testid^='ai-turn']"
+      },
+      "code_block_selectors": ["pre code"],
+      "input_selector": "div[contenteditable='true']",
+      "input_type": "contenteditable",
+      "reset_window_hours": 5
+    }
+  }
+}

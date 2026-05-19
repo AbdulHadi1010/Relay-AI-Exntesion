@@ -1,0 +1,6 @@
+name = "relay-groq-proxy"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# GROQ_API_KEY is set as a secret via `wrangler secret put GROQ_API_KEY`
