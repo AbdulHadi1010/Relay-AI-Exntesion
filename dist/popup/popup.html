@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relay</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>⚡ Relay</h1>
+      <span class="tagline">Hand off your conversation</span>
+    </header>
+
+    <div class="platforms-grid">
+      <button class="platform-btn chatgpt" data-platform="chatgpt" data-url="https://chatgpt.com/?model=auto">
+        <span class="platform-icon">🤖</span>
+        <span class="platform-name">ChatGPT</span>
+      </button>
+      <button class="platform-btn claude" data-platform="claude" data-url="https://claude.ai/new">
+        <span class="platform-icon">🟣</span>
+        <span class="platform-name">Claude</span>
+      </button>
+      <button class="platform-btn gemini" data-platform="gemini" data-url="https://gemini.google.com/app">
+        <span class="platform-icon">✨</span>
+        <span class="platform-name">Gemini</span>
+      </button>
+      <button class="platform-btn grok" data-platform="grok" data-url="https://grok.com">
+        <span class="platform-icon">⚡</span>
+        <span class="platform-name">Grok</span>
+      </button>
+    </div>
+
+    <div id="status-line" class="status-line">
+      <!-- Shows current status or last action -->
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

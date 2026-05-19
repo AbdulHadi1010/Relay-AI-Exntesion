@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Relay",
+  "description": "Never hit an AI dead end again. Seamlessly hand off conversations between AI platforms.",
+  "version": "1.0.0",
+  "permissions": [
+    "storage",
+    "alarms",
+    "scripting",
+    "notifications",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "*://chatgpt.com/*",
+    "*://claude.ai/*",
+    "*://gemini.google.com/*",
+    "*://grok.com/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://chatgpt.com/*"],
+      "js": ["extractor/extractor.js", "content/chatgpt.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://claude.ai/*"],
+      "js": ["extractor/extractor.js", "content/claude.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["config/selectors.json", "extractor/extractor.js"],
+      "matches": ["*://chatgpt.com/*", "*://claude.ai/*"]
+    }
+  ]
+}
